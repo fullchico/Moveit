@@ -69,10 +69,6 @@
 </div>
 
 <div id="dependencias">
-  <h3>Dependêcias.</h3>
-    <p align="center">
-      para utilizar da aplicação, será necessario fazer alguns procedimentos de instalção de pacotes
-    </p>
 
 <h3>Baixar Projeto.</h3>  
 
