@@ -74,15 +74,6 @@
       para utilizar da aplicação, será necessario fazer alguns procedimentos de instalção de pacotes
     </p>
 
-```bash
-# iniciar projeto Next.js
-$ yarn create next-app
-$ npx create-next-app
-
-# Install Framer Motion
-$ yarn add framer-motion
-$ npm install framer-motion
-  ```
 <h3>Baixar Projeto.</h3>  
 
 ```bash
