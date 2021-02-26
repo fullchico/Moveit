@@ -49,7 +49,7 @@ export function CountdownProvider({ children }: CountdownProvider) {
     clearTimeout(countdownTimeout)
     setIsActive(!isActive)
     setHasFinishid(false)
-    setTime(1*5)
+    setTime(25*60)
   }
 
   return (
