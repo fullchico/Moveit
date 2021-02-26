@@ -29,7 +29,7 @@
   <h4 id="sobre" > <b>Projeto feito em Next.js.</b>
     Projeto com finalidade de atender usuários que passam muito tempo em frente ao computador, dessa forma o projeto aborda a realização de atividades físicas e de descanso, para que os usuários não tenham afeitos a longo prazo pela falta de atividade.</h4>
 
-  <img src="./src/public/img/Moveitt.gif" alt="Gif">
+  <img src="./public/img/Moveitt.gif" alt="Gif">
 </div>
 
 
@@ -82,7 +82,7 @@ $ npx create-next-app
 # Install Framer Motion
 $ yarn add framer-motion
 $ npm install framer-motion
-
+  ```
 <h3>Baixar Projeto.</h3>  
 
 ```bash
@@ -101,9 +101,6 @@ $ npm install
 <div id="Projeto">
   <h3>Projeto.</h3>
   <a href="https://moveit-lac.vercel.app/">
-  <img width="200px" src="./src/public/img/movit.png" alt="Imagem de pagina web">
+  <img width="200px" src="./public/img/movit.png" alt="Imagem de pagina web">
   </a>
 </div>
-
-
-<h3>Orgulhosamente feito durante a imersão React/NEXT.js</h3>
