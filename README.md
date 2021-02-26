@@ -16,7 +16,7 @@
 
 <div >
 <ul align="center">
-  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white"
         alt="TypeScript">
   <img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js">
 </ul>
@@ -29,7 +29,7 @@
   <h4 id="sobre" > <b>Projeto feito em Next.js.</b>
     Projeto com finalidade de atender usuários que passam muito tempo em frente ao computador, dessa forma o projeto aborda a realização de atividades físicas e de descanso, para que os usuários não tenham afeitos a longo prazo pela falta de atividade.</h4>
 
-  <img src="./src/img/Moveitt.gif" alt="Gif">
+  <img src="./src/public/img/Moveitt.gif" alt="Gif">
 </div>
 
 
@@ -101,7 +101,7 @@ $ npm install
 <div id="Projeto">
   <h3>Projeto.</h3>
   <a href="https://moveit-lac.vercel.app/">
-  <img width="200px" src="./src/img/movit.png" alt="Imagem de pagina web">
+  <img width="200px" src="./src/public/img/movit.png" alt="Imagem de pagina web">
   </a>
 </div>
 
