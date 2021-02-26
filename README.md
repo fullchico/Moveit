@@ -7,7 +7,7 @@
     |
   <a href="#tecnologias">Tecnólogias</a>
     |
-  <a href="#dependencias">Dependências</a>
+  <a href="#dependencias">Utilizar projeto</a>
     |
   <a href="#Projeto">Pagina do projeto</a>
 
