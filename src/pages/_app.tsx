@@ -19,11 +19,11 @@ function MyApp({ Component, pageProps }) {
 
   return (
   // metodo para utilizar useContext envolvendo a aplicação no context
-  <ChallengesProvider>
-    <CountdownProvider>
+
+ 
       <Component {...pageProps} />
-    </CountdownProvider>
-  </ChallengesProvider>
+   
+
 
   )
 }

@@ -11,11 +11,12 @@ const ExperienceBar = () => {
 
   return (
     <header className={styles.experienceBar}>
-      <span>{currentExperience} xp</span>
+      <span>0 xp</span>
       <div>
-        <div style={{ width: `${percentToNextLevel}%` }} />
-
-        <span className={styles.currentExperience} style={{left:"50%"}}>{parseFloat(percentToNextLevel.toFixed(0))}%</span>
+        <div style={{ width: `${percentToNextLevel}%` }}/>
+        <span className={styles.currentExperience} style={{left: `${percentToNextLevel}%`}}>
+          {currentExperience} xp
+        </span>
       </div>
       <span>{experienceToNextLevel} xp</span>
     </header>

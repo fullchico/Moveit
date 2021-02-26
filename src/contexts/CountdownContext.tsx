@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react'
+
 import { ChallegsContext } from './ChallengsContext';
 
 // interface
@@ -49,7 +50,7 @@ export function CountdownProvider({ children }: CountdownProvider) {
     clearTimeout(countdownTimeout)
     setIsActive(!isActive)
     setHasFinishid(false)
-    setTime(25*60)
+    setTime(1*2)
   }
 
   return (
@@ -62,7 +63,7 @@ export function CountdownProvider({ children }: CountdownProvider) {
     }}>
 
       {children}
-
+     
     </CountdownContext.Provider>
   )
 
