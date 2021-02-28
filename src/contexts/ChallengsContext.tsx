@@ -2,10 +2,9 @@ import { createContext, ReactNode, useEffect, useState } from 'react'
 import Cookies from 'js-cookie'
 import challengs from '../../challenges.json'
 import { LevelUpModal } from '../components/LevelUpModal';
-import { useRouter } from 'next/router'
+
 import api from '../service/api'
 import LoginModal from '../components/LoginModal';
-
 
 interface challenge {
   type: 'body' | 'eye',
@@ -13,8 +12,23 @@ interface challenge {
   amount: number
 }
 
+interface SyntheticEvent {
+  bubbles: boolean;
+  cancelable: boolean;
+  currentTarget: EventTarget;
+  defaultPrevented: boolean;
+  eventPhase: number;
+  isTrusted: boolean;
+  nativeEvent: Event;
+  preventDefault(): void;
+  stopPropagation(): void;
+  target: EventTarget;
+  timeStamp: Date;
+  type: string;
+}
 
 interface ChallegsContextData {
+  
   gitName: string;
   gitImg: string;
   level: number;
@@ -29,7 +43,7 @@ interface ChallegsContextData {
   resetChallenge: () => void;
   completeChallenge: () => void;
   closeModal: () => void;
-  teste: () => void;
+  teste: (event:SyntheticEvent) => void;
 
 }
 
@@ -40,7 +54,7 @@ interface ChallengesProviderProps {
   challengesCompletad: number;
   gitName: string;
   gitImg: string;
-  loginModal: string;
+  loginModal: boolean;
 }
 
 
@@ -52,7 +66,7 @@ export function ChallengesProvider({
   ...rest
 }: ChallengesProviderProps) {
 
-  const router = useRouter();
+  
 
   const [loginModal, setLoginModal] = useState(rest.loginModal ?? false)
 
@@ -69,12 +83,11 @@ export function ChallengesProvider({
   const [logGit, setLogGit] = useState()
 
   useEffect(() => {
+
     if (loginModal) {
       Cookies.set('loginModal', String(loginModal))
       Cookies.set('GitUser', String(gitName))
       Cookies.set('GitImg', String(gitImg))  
-    }else{
-      setLoginModal(false)
     }
   }, [loginModal])
 
@@ -141,14 +154,14 @@ export function ChallengesProvider({
     setisLevelUpModalOpen(false)
   }
 
-  async function teste(event) {
+  async function teste(event:any) {
     event.preventDefault()
     const dados = await api.get(logGit)
     const { name, avatar_url } = dados.data
     setGitName(name)
     setGitImg(avatar_url)
     setLoginModal(true)
-
+    
   }
 
 
@@ -172,7 +185,7 @@ export function ChallengesProvider({
       }}>
 
 
-      {loginModal && children || <LoginModal />}
+      {  loginModal && children || <LoginModal />}
       { isLevelUpModalOpen && < LevelUpModal />}
 
 
