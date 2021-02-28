@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import styles from '../styles/components/ChallengeBox.module.css'
 import { ChallegsContext } from '../contexts/ChallengsContext'
-import { CompletedChallgens } from './CompleteChellagens'
+
 import { CountdownContext } from '../contexts/CountdownContext'
 
 const ChallengeBox = () => {
@@ -11,6 +11,7 @@ const { activeChallenge, resetChallenge, completeChallenge} = useContext(Challeg
 const {startCountdown} = useContext(CountdownContext)
 
 function hadleChallengeSucceded(){
+ 
   completeChallenge()
   startCountdown()
 }

@@ -1,0 +1,83 @@
+.container{
+  background: #5965E0;
+  height: 100vh;
+
+  color: black;
+
+  display: flex;
+  flex: grid;
+  grid-template-columns: 1fr 1fr;
+  
+}
+
+
+.logo {
+
+width: 100vh;
+background: url('../../../public/img/Simbolo.png')1px no-repeat;
+
+}
+
+.login {
+  
+  display: grid;
+  grid: 15rem /1fr;
+
+  margin: 12rem 0 0 5rem ;  
+}
+
+
+.login img{
+padding: 0;
+margin:0 0 2rem 0;
+ 
+}
+
+.login h1{
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--white);
+}
+
+.login form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
+.login input{
+  width: 25rem;
+  height: 5rem;
+
+  border: solid 0px;
+  color: var(--white);
+  font-size: 2rem;
+
+  text-align: center;
+  background-image:linear-gradient(to right, #4953B8, #5965E0) ;
+}
+
+.login button{
+  margin: 0;
+  width: 5rem;
+  height: 5rem;
+
+  background: #4953B8;
+
+  border: solid 0px;
+
+  display: flex;
+  justify-content: center;
+
+  transition: linear 0.3s;
+}
+
+.login button:hover{
+  background: var(--green);
+}
+
+
+.login button img{
+  margin: 1.8rem;
+}

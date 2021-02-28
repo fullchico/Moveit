@@ -7,15 +7,15 @@ import {ChallegsContext} from '../contexts/ChallengsContext'
 
 export function Profile(){
 
-  const {level} = useContext(ChallegsContext)
+  const {level, gitImg,gitName} = useContext(ChallegsContext)
 
   return(
     <div className={styles.profileContainer}>
 
-      <img src="https://avatars.githubusercontent.com/u/62688167?s=400&u=5ef5b9890d34bd30c2ada7307f8579981c121459&v=4" alt="Diogo Barbosa"/>
+      <img src={gitImg} alt={gitName}/>
 
       <div>
-        <strong>Diogo Barbosa</strong>
+        <strong>{gitName}</strong>
         
         <p>
           <img src="icons/level.svg" alt="level"/>
