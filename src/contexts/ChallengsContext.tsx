@@ -4,6 +4,7 @@ import challengs from '../../challenges.json'
 import { LevelUpModal } from '../components/LevelUpModal';
 import { useRouter } from 'next/router'
 import api from '../service/api'
+import LoginModal from '../components/LoginModal';
 
 
 interface challenge {
@@ -14,22 +15,22 @@ interface challenge {
 
 
 interface ChallegsContextData {
-  gitName:string;
-  gitImg:string;
+  gitName: string;
+  gitImg: string;
   level: number;
   currentExperience: number;
   challengesCompletad: number;
   activeChallenge: challenge;
   experienceToNextLevel: number;
-  setLogGit:any;
+  setLogGit: any;
 
   levelUp: () => void;
   startNewChallenge: () => void;
   resetChallenge: () => void;
   completeChallenge: () => void;
   closeModal: () => void;
-  teste:()=>void;
-  
+  teste: () => void;
+
 }
 
 interface ChallengesProviderProps {
@@ -37,8 +38,9 @@ interface ChallengesProviderProps {
   level: number;
   currentExperience: number;
   challengesCompletad: number;
-  gitName:string;
-  gitImg:string;
+  gitName: string;
+  gitImg: string;
+  loginModal: string;
 }
 
 
@@ -46,23 +48,35 @@ export const ChallegsContext = createContext({} as ChallegsContextData)
 
 export function ChallengesProvider({
   children,
-  
+
   ...rest
 }: ChallengesProviderProps) {
 
   const router = useRouter();
 
+  const [loginModal, setLoginModal] = useState(rest.loginModal ?? false)
+
   const [level, setLevel] = useState(rest.level ?? 1);
   const [currentExperience, setCurrentExperience] = useState(rest.currentExperience ?? 0)
   const [challengesCompletad, setchallengesCompletad] = useState(rest.challengesCompletad ?? 0)
-  const[gitName,setGitName] = useState(rest.gitName)
-  const[gitImg, setGitImg] = useState(rest.gitImg)
+  const [gitName, setGitName] = useState(rest.gitName)
+  const [gitImg, setGitImg] = useState(rest.gitImg)
 
   const [activeChallenge, setActiveChallenge] = useState(null)
   const [isLevelUpModalOpen, setisLevelUpModalOpen] = useState(false)
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2)
 
   const [logGit, setLogGit] = useState()
+
+  useEffect(() => {
+    if (loginModal) {
+      Cookies.set('loginModal', String(loginModal))
+      Cookies.set('GitUser', String(gitName))
+      Cookies.set('GitImg', String(gitImg))  
+    }else{
+      setLoginModal(false)
+    }
+  }, [loginModal])
 
   useEffect(() => {
     Notification.requestPermission()
@@ -77,8 +91,8 @@ export function ChallengesProvider({
     Cookies.set('level', String(level))
     Cookies.set('currentExperience', String(currentExperience))
     Cookies.set('challengesCompletad', String(challengesCompletad))
-    Cookies.set('GitUser', String(gitName))
-    Cookies.set('GitImg', String(gitImg))
+    
+
   }, [level, currentExperience, challengesCompletad])
 
   function startNewChallenge() {
@@ -123,24 +137,24 @@ export function ChallengesProvider({
     setchallengesCompletad(challengesCompletad + 1)
   }
 
-  function closeModal(){
+  function closeModal() {
     setisLevelUpModalOpen(false)
   }
 
- async function teste(event){
+  async function teste(event) {
     event.preventDefault()
-
-    const dados = await api.get(logGit) 
-    const {name, avatar_url} = dados.data
+    const dados = await api.get(logGit)
+    const { name, avatar_url } = dados.data
     setGitName(name)
     setGitImg(avatar_url)
-    router.push('/home')
+    setLoginModal(true)
+
   }
-   
+
 
   return (
     <ChallegsContext.Provider
-    value={{
+      value={{
         gitName,
         gitImg,
         setLogGit,
@@ -156,9 +170,12 @@ export function ChallengesProvider({
         completeChallenge,
         closeModal,
       }}>
-      
-      {children}
-      { isLevelUpModalOpen && < LevelUpModal/>}
+
+
+      {loginModal && children || <LoginModal />}
+      { isLevelUpModalOpen && < LevelUpModal />}
+
+
     </ChallegsContext.Provider>
   )
 }
