@@ -11,11 +11,13 @@ import { Profile } from '../components/Profile'
 import styles from '../styles/pages/Home.module.css'
 import { ChallengesProvider } from '../contexts/ChallengsContext'
 import { CountdownProvider } from '../contexts/CountdownContext'
+import LoginModal from '../components/LoginModal'
 
-export default function index({ Component, pageProps,level,currentExperience,challengesCompletad,gitName,gitImg }) {
+export default function index({level,currentExperience,challengesCompletad,gitName,gitImg, loginModal }) {
 
   return (
     <ChallengesProvider
+     loginModal={false}
      level={level}
      gitName={gitName}
      gitImg={gitImg}
@@ -52,10 +54,11 @@ export default function index({ Component, pageProps,level,currentExperience,cha
 export const getServerSideProps:GetServerSideProps = async(ctx)=>{
 
  
-  const {level, currentExperience, challengesCompletad,gitImg,gitName} = ctx.req.cookies
+  const {level, currentExperience, challengesCompletad,gitImg,gitName, loginModal} = ctx.req.cookies
   
   return{
     props:{
+      loginModal:Boolean(LoginModal),
       gitName:String(gitName),
       gitImg:String(gitImg),
       level:Number(level),

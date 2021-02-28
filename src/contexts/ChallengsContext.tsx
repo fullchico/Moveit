@@ -23,6 +23,7 @@ interface ChallegsContextData {
   activeChallenge: challenge;
   experienceToNextLevel: number;
   setLogGit: any;
+  loginModal:boolean
 
   levelUp: () => void;
   startNewChallenge: () => void;
@@ -73,9 +74,10 @@ export function ChallengesProvider({
     if (loginModal) {
       Cookies.set('loginModal', String(loginModal))
       Cookies.set('GitUser', String(gitName))
-      Cookies.set('GitImg', String(gitImg))  
+      Cookies.set('GitImg', String(gitImg)) 
+      
     }
-  }, [loginModal])
+  }, [])
 
   useEffect(() => {
     Notification.requestPermission()
@@ -154,6 +156,7 @@ export function ChallengesProvider({
   return (
     <ChallegsContext.Provider
       value={{
+        loginModal,
         gitName,
         gitImg,
         setLogGit,
